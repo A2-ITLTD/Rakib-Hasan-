@@ -1,0 +1,40 @@
+import React from "react";
+
+const SectionHeading = ({
+  eyebrow,
+  title,
+  subtitle,
+  align = "center",
+  dark = false,
+  className = "",
+  bottomSpacing = "mb-10 md:mb-14",
+  compact = false,
+}) => {
+  const alignClass = align === "left" ? "text-left items-start" : "text-center items-center";
+
+  return (
+    <div className={`flex flex-col ${alignClass} ${bottomSpacing} ${className}`}>
+      {eyebrow && (
+        <span className={`eyebrow ${compact ? "mb-1" : "mb-3"}`}>{eyebrow}</span>
+      )}
+      <h2
+        className={`main-title text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tight ${
+          dark ? "text-white" : "text-[var(--color-heading)]"
+        }`}
+      >
+        {title}
+      </h2>
+      {subtitle && (
+        <p
+          className={`${compact ? "mt-1.5 text-sm md:text-base" : "mt-4 text-base md:text-lg"} max-w-2xl leading-relaxed ${
+            dark ? "text-white/70" : "text-[var(--color-body)]"
+          } ${align === "left" ? "" : "mx-auto"}`}
+        >
+          {subtitle}
+        </p>
+      )}
+    </div>
+  );
+};
+
+export default SectionHeading;
